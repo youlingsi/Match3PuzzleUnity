@@ -45,11 +45,13 @@ public class GameManager : MonoBehaviour
 
 	void play(){
 
-		Vector3 worldClick = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		Vector2 pos = new Vector2(worldClick.x, worldClick.y);
-		RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
+		//Vector3 worldClick = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		//Vector2 pos = new Vector2(worldClick.x, worldClick.y);
+        Vector3 ray = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit hit;
+        bool hitTrue = Physics.Raycast(ray, Vector3.zero, out hit);
 		Tile t;
-		if (hit) {t = hit.collider.GetComponent<Tile>();
+		if (hitTrue) {t = hit.collider.GetComponent<Tile>();
 			if (selectionCount < 1)
 			{
 				selected = t;

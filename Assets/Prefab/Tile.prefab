@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4615468342389968}
   - component: {fileID: 212901434808843894}
   - component: {fileID: 114903197053085660}
-  - component: {fileID: 61395277034015972}
-  - component: {fileID: 50025335104369374}
+  - component: {fileID: 65242161784585204}
+  - component: {fileID: 54587016262391682}
   m_Layer: 9
   m_Name: Tile
   m_TagString: Tile
@@ -43,51 +43,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50025335104369374
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!54 &54587016262391682
+Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1500513387079882}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 120
-  m_Material: {fileID: 6200000, guid: 13be10f1d5be9a5419094265746cf07c, type: 2}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 5
---- !u!61 &61395277034015972
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1500513387079882}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 13be10f1d5be9a5419094265746cf07c, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 120, y: 120}
-    newSize: {x: 1.63, y: 1.63}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 118, y: 120}
-  m_EdgeRadius: 0
+  m_Mass: 120
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 122
+  m_CollisionDetection: 0
+--- !u!65 &65242161784585204
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1500513387079882}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 118, y: 120, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114903197053085660
 MonoBehaviour:
   m_ObjectHideFlags: 1
