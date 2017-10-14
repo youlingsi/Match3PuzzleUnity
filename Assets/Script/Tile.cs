@@ -6,7 +6,7 @@ public class Tile : MonoBehaviour {
 
     public GameManager GM;
     public Map map;
-    public Sprite[] sprites;
+    public Material[] mate;
     public int hp = 1;
     public int val;
     public int tCoIndex;
@@ -33,28 +33,34 @@ public class Tile : MonoBehaviour {
         SpUpdate();
     }
 
-    // update the sprite based on the value
+    // update the material based on the value
     public void SpUpdate(){
-        this.GetComponent<SpriteRenderer>().sprite = sprites[val];
+        //this.GetComponent<SpriteRenderer>().sprite = sprites[val];
+        this.GetComponent<MeshRenderer>().material = mate[val];
     }
 
     // destroy this game object
-    private void SelfDestroy()
-    {
-        Destroy(gameObject);
-    }
 
-
-
-    public void HpDeduct(){
+    public void HpDeduct() {
         hp -= 1;
-        if (hp == 0){
-            SelfDestroy();
+        if (hp == 0) {
+            StartCoroutine(SelfDestroy());
         }
     }
 
-
-
+    IEnumerator SelfDestroy()
+    {
+        yield return new WaitForSeconds(0.3f);
+        GetComponent<ParticleSystem>().Play();
+        yield return new WaitForSeconds(0.5f);
+        try
+        {
+            Vector3 c = new Vector3(0, 0, -200);
+            this.transform.position = c;
+            Destroy(gameObject);
+        }
+        catch (System.NullReferenceException) { }
+    }
 
 
 

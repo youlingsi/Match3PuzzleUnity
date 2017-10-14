@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 		//Vector2 pos = new Vector2(worldClick.x, worldClick.y);
         Vector3 ray = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit hit;
-        bool hitTrue = Physics.Raycast(ray, Vector3.zero, out hit);
+        bool hitTrue = Physics.Raycast(ray, Vector3.forward, out hit);
 		Tile t;
 		if (hitTrue) {t = hit.collider.GetComponent<Tile>();
 			if (selectionCount < 1)

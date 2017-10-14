@@ -5,10 +5,10 @@ using System.Linq;
 
 public class Map : MonoBehaviour
 {
-    public GameManager GM;
-    public Tile tile;
-    public Column[] top;
-	public int State;
+    public GameManager GM; // game mananer
+    public Tile tile; // tile prefeb
+    public Column[] top; //list of the spawner collider 
+	public int State;  // game state
 
 
 
@@ -44,12 +44,14 @@ public class Map : MonoBehaviour
         }
     }
     
+    // return a tile that is at the tCod posistion related to given tile (tCod is a relative coordinate)
     private Tile TileFindNei(Tile c, int[] tCod)
     {
         int[] cod = { c.tCoIndex + tCod[0], c.tTiIndex + tCod[1] };
         return TileFindTile(cod);
     }
 
+    // find the tile based on the tCod value (tCod[0]= x, tCod[1]=y)
     private Tile TileFindTile(int[] tcod)
     {
         if (tcod[0] >= 0 & tcod[1] >= 0)
@@ -75,20 +77,19 @@ public class Map : MonoBehaviour
         }
     }
 
+    // eliminate a given tile( First move it to a distant place then destroy it)
     private void TileKill(Tile t)
     {
 
         try {
-			Vector3 c = new Vector3(0,0,-20);
             int tCoIndex = t.tCoIndex;
             top[tCoIndex].TileList.Remove(t);
-			t.transform.position = c;
             t.HpDeduct();
         }
         catch (System.NullReferenceException) { }
     }
 
-    // create initial map Alternat
+    // create initial map
     private void MapInitiate()
     {
         int[][] xCheck = { new int[] { -1, 0 }, new int[] { -2, 0 } };
@@ -112,7 +113,7 @@ public class Map : MonoBehaviour
                 check = TileFindNei(c, yCheck[0]);
                 bool yMatch = TileCheck(TileFindNei(c, yCheck[0]), TileFindNei(c, yCheck[1]));
                 if (yMatch) { vElim.Add(check.val); }
-                for (int n = 1; n < c.sprites.Length; n++) {
+                for (int n = 1; n < c.mate.Length; n++) {
                     if (!vElim.Contains(n)) { pool.Add(n); }
                 }
                 c.RandTile(pool);
@@ -123,7 +124,7 @@ public class Map : MonoBehaviour
 		}
     }
 
-    //Check if there are any match available in the map. True = Match available, False = Match not available
+    // Check if there are any match available in the map. True = Match available, False = Match not available
     private bool MapCheck()
     {
         int[][] smpArr = {
@@ -136,7 +137,7 @@ public class Map : MonoBehaviour
         for (int i = 0; i < top.Length; i++) {
             for (int j = 0; j < top[i].TileList.Count(); j++) {
                 List<Tile> smp = new List<Tile> { top[i].TileList[j] };
-                int[] tSort = new int[top[i].TileList[j].sprites.Length];
+                int[] tSort = new int[top[i].TileList[j].mate.Length];
                 try
                 {
                     foreach (int[] arr in smpArr)
@@ -156,6 +157,7 @@ public class Map : MonoBehaviour
         return false;
     }
 
+    // Destroy all the tiles in the map.
     private void MapClear() {
         for (int i = 0; i < top.Length; i++) {
             for (int j = 0; j < top[i].TileList.Count(); j++) {
@@ -165,10 +167,7 @@ public class Map : MonoBehaviour
         }
     }
 
-
-
-
-    //return a list of eliminatable tiles around  the tile T in X or Y direction. exclude tile T;
+    // return a list of eliminatable tiles around  the tile T in X or Y direction. exclude tile T;
     private List<Tile> ElimList(Tile T, string dir)
     {
         int[][] posArr = new int[2][];
@@ -190,7 +189,7 @@ public class Map : MonoBehaviour
         return tList;
     }
 
-    //Check if there are any match available towards one direction of the tile, including the tile itself.
+    // Check if there are any match available towards one direction of the tile, including the tile itself.
     private List<Tile> MatchSearch(Tile T, int[] pos)
     {
         List<Tile> tList = new List<Tile>() { T };
@@ -213,6 +212,7 @@ public class Map : MonoBehaviour
         }
     }
 
+    // return a list of all the eliminatable tiles around (on both the x and y direction) a given tile, exclued the given tile
     private List<Tile> ElimListAll(Tile T)
     {
         List<Tile> temp = new List<Tile>();
@@ -223,30 +223,10 @@ public class Map : MonoBehaviour
         return tList;
 
     }
-    //kill the tiles in the eilmination list
-	public void Elimination(Tile T1, Tile T2) {
-        List<Tile> tList = new List<Tile>();
-        TileSwap(T1, T2);
-        try
-        {
-            tList.AddRange(ElimListAll(T1));
-            tList.AddRange(ElimListAll(T2));
-        }
-        catch (System.NullReferenceException) { print(tList.Count); }
-        if(tList.Count != 0)
-        {
-            foreach (Tile t in tList)
-            {
-                TileKill(t);
-            }
-        }
-        else
-        {
-            TileSwap(T1, T2);
-        }
-     
-    }
 
+
+
+    // Find and eliminate the matches in the map
 	private void MapElimination()
 	{
 		if (MapCheck()) {
@@ -278,7 +258,33 @@ public class Map : MonoBehaviour
 
 	}
 
-	public List<Tile> TileFindAllNeigh(Tile T)
+    // kill the tiles around the two given tiles
+    public void Elimination(Tile T1, Tile T2)
+    {
+        List<Tile> tList = new List<Tile>();
+        TileSwap(T1, T2);
+        try
+        {
+            tList.AddRange(ElimListAll(T1));
+            tList.AddRange(ElimListAll(T2));
+        }
+        catch (System.NullReferenceException) { print(tList.Count); }
+        if (tList.Count != 0)
+        {
+            foreach (Tile t in tList)
+            {
+                TileKill(t);
+            }
+        }
+        else
+        {
+            TileSwap(T1, T2);
+        }
+
+    }
+
+    // Return a list of tiles that are adjecent to the given tile (up, down, left, right)
+    public List<Tile> TileFindAllNeigh(Tile T)
     {
 		
         int[][] posArr = { new int[] { -1, 0 }, new int[] { 0, 1 }, new int[] { 1, 0 }, new int[] { 0, -1 } };
@@ -293,22 +299,31 @@ public class Map : MonoBehaviour
         return tList;
     }
 
+    // When the tiles reach the idle, wait for a certain time, check and eliminate the matches in the map 
 	public void MapMatchElim(){
 		MapStateUpdate ();
 		if (State == 0) {
-			MapElimination ();
+            StartCoroutine(MapEliminationWait());
 		} else {
 			print ("False");
 		}
 				
 	}
 
-	public void MapStateUpdate(){
+    // check and returen the state of the map([0 -idle; 0> - moving])
+    public void MapStateUpdate(){
 		State = 0;
 		foreach (Column co in top) {
 			if(co.TileList.Count < co.TileNum){State++;}
 		}
 	}
+
+    // waiting before elimination
+    IEnumerator MapEliminationWait()
+    {
+        yield return new WaitForSeconds(0.4f);
+        MapElimination();
+    }
 		
 
 }

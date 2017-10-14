@@ -51,9 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ff7882b5ba74941992316e17175368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: {fileID: 0}
-  tile: {fileID: 114903197053085660, guid: 8b49568da02dfe148b621eff9a73cfb7, type: 2}
-  spwaner: []
+  map: {fileID: 114101092048699058, guid: 4ba60b7e554204faa91a3e0661b7c6ff, type: 2}
+  tile: {fileID: 114636640742706936, guid: 8b49568da02dfe148b621eff9a73cfb7, type: 2}
   size: 9
   tilesize: 120
   frame: {fileID: 1163860437583000, guid: 611dbe53915bc48ebacbe654d58a0800, type: 2}

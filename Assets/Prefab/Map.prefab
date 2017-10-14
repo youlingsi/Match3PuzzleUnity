@@ -356,7 +356,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1748742014257450}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 100, y: 100, z: 5}
@@ -368,7 +368,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1662628442002420}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 100, y: 100, z: 5}
@@ -380,7 +380,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1669661517112620}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 100, y: 100, z: 5}
@@ -392,7 +392,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1741780245339124}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 100, y: 100, z: 5}
@@ -404,7 +404,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1048485819785670}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 100, y: 100, z: 5}
@@ -416,7 +416,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1246848010962284}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 100, y: 100, z: 5}
@@ -428,7 +428,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1406126852752064}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 100, y: 100, z: 5}
@@ -452,7 +452,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1679577730176864}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 100, y: 100, z: 5}
@@ -464,7 +464,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1320380743949986}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 100, y: 100, z: 5}
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
-  tile: {fileID: 114903197053085660, guid: 8b49568da02dfe148b621eff9a73cfb7, type: 2}
+  tile: {fileID: 114636640742706936, guid: 8b49568da02dfe148b621eff9a73cfb7, type: 2}
   top:
   - {fileID: 114194724948572076}
   - {fileID: 114549314580672514}
@@ -492,7 +492,7 @@ MonoBehaviour:
   - {fileID: 114549755138152930}
   - {fileID: 114658800108768476}
   - {fileID: 114400710861066336}
-  State: 9
+  State: 0
 --- !u!114 &114188427429191940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -506,7 +506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
   map: {fileID: 114101092048699058}
-  coIndex: 0
+  coIndex: 4
   TileList: []
   TileNum: 9
   SpawnerState: 0
@@ -540,7 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
   map: {fileID: 114101092048699058}
-  coIndex: 0
+  coIndex: 5
   TileList: []
   TileNum: 9
   SpawnerState: 0
@@ -557,7 +557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
   map: {fileID: 114101092048699058}
-  coIndex: 0
+  coIndex: 8
   TileList: []
   TileNum: 9
   SpawnerState: 0
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
   map: {fileID: 114101092048699058}
-  coIndex: 0
+  coIndex: 6
   TileList: []
   TileNum: 9
   SpawnerState: 0
@@ -625,7 +625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
   map: {fileID: 114101092048699058}
-  coIndex: 0
+  coIndex: 7
   TileList: []
   TileNum: 9
   SpawnerState: 0
